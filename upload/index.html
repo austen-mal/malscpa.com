@@ -282,6 +282,32 @@
             cursor: not-allowed;
         }
 
+        .submit-btn.loading {
+            pointer-events: none;
+        }
+
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+
+        .submit-btn.loading .spinner {
+            display: block;
+        }
+
+        .spinner {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(26, 35, 50, 0.3);
+            border-top-color: #1a2332;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         .security-note {
             display: flex;
             align-items: center;
@@ -402,14 +428,15 @@
                             </svg>
                         </div>
                         <p class="upload-text"><span>Click to upload</span> or drag and drop</p>
-                        <p class="upload-hint">PDF, JPG, PNG up to 8MB per file</p>
+                        <p class="upload-hint">PDF, JPG, PNG, CSV up to 8MB per file</p>
                     </div>
-                    <input type="file" id="fileInput" name="documents" multiple accept=".pdf,.jpg,.jpeg,.png">
+                    <input type="file" id="fileInput" name="documents" multiple accept=".pdf,.jpg,.jpeg,.png,.csv">
                     <div class="file-list" id="fileList"></div>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submitBtn">
+                <button type="submit" class="submit-btn" id="submitBtn" disabled>
                     <span class="btn-text">Upload Documents</span>
+                    <div class="spinner"></div>
                 </button>
             </form>
 
@@ -428,9 +455,14 @@
     </div>
 
     <script>
+        const form = document.getElementById('uploadForm');
         const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('fileInput');
         const fileList = document.getElementById('fileList');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Hide file input but keep it functional
+        fileInput.style.display = 'none';
 
         // Click to upload
         uploadArea.addEventListener('click', () => fileInput.click());
@@ -448,12 +480,25 @@
         uploadArea.addEventListener('drop', (e) => {
             e.preventDefault();
             uploadArea.classList.remove('dragover');
-            fileInput.files = e.dataTransfer.files;
+            
+            const dt = new DataTransfer();
+            for (let file of e.dataTransfer.files) {
+                if (file.size <= 8 * 1024 * 1024) {
+                    dt.items.add(file);
+                } else {
+                    alert(`File "${file.name}" is too large. Maximum size is 8MB per file.`);
+                }
+            }
+            fileInput.files = dt.files;
             updateFileList();
+            updateSubmitButton();
         });
 
         // File input change
-        fileInput.addEventListener('change', updateFileList);
+        fileInput.addEventListener('change', () => {
+            updateFileList();
+            updateSubmitButton();
+        });
 
         function updateFileList() {
             const files = fileInput.files;
@@ -483,8 +528,18 @@
             return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
         }
 
-        // Hide the actual file input but keep it functional
-        fileInput.style.display = 'none';
+        function updateSubmitButton() {
+            submitBtn.disabled = fileInput.files.length === 0;
+        }
+
+        // Form submission
+        form.addEventListener('submit', function() {
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+        });
+
+        // Initial state
+        submitBtn.disabled = true;
     </script>
 </body>
 </html>
