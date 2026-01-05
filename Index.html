@@ -3,331 +3,1003 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mals CPA - Fractional CFO, Bookkeeping & Tax Preparation Services</title>
+    <title>Mal's CPA - Fractional CFO, Bookkeeping & Tax Preparation Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --navy: #1e3a5f;
+            --navy-dark: #152a45;
+            --navy-light: #2a4a73;
+            --gold: #c9a962;
+            --gold-light: #e5d4a1;
+            --gold-dark: #a68b4b;
+            --cream: #faf8f5;
+            --cream-dark: #f0ebe3;
+            --text: #3d3d3d;
+            --text-light: #6b6b6b;
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--cream);
         }
 
         /* Navigation */
         nav {
-            background: #1e3a5f;
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: var(--navy);
+            padding: 0 5%;
+            transition: all 0.3s ease;
         }
 
-        nav .container {
-            max-width: 1200px;
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(30, 58, 95, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 80px;
         }
 
-        nav .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
+        .logo {
             display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
-            transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #4a90e2;
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--cream), transparent);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 169, 98, 0.15);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            color: var(--gold);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(42px, 5vw, 64px);
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 40px;
+            max-width: 520px;
+            font-weight: 300;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: #4a90e2;
-            color: white;
-            padding: 1rem 2.5rem;
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            transition: background 0.3s;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
 
-        .cta-button:hover {
-            background: #357abd;
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy-dark);
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 169, 98, 0.3);
         }
 
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        section h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #1e3a5f;
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, var(--gold), var(--navy-light), var(--gold));
+            border-radius: 23px;
+            z-index: -1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .hero-image-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            z-index: -1;
         }
 
         /* Services Section */
+        .services {
+            padding: 120px 5%;
+            background: var(--cream);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--gold-dark);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(36px, 4vw, 52px);
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.2;
+        }
+
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
         }
 
         .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 48px 36px;
+            box-shadow: 0 4px 20px rgba(30, 58, 95, 0.06);
+            border: 1px solid rgba(30, 58, 95, 0.06);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(30, 58, 95, 0.12);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--gold);
         }
 
         .service-card h3 {
-            color: #1e3a5f;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 16px;
         }
 
-        .service-card p {
-            color: #666;
-            margin-bottom: 1rem;
+        .service-card > p {
+            color: var(--text-light);
+            font-size: 15px;
+            margin-bottom: 24px;
+            line-height: 1.7;
         }
 
-        .service-card ul {
+        .service-list {
             list-style: none;
-            padding-left: 0;
         }
 
-        .service-card li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: #555;
+        .service-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--text);
+            border-bottom: 1px solid var(--cream-dark);
         }
 
-        .service-card li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #4a90e2;
-            font-weight: bold;
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        .service-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
         }
 
         /* About Section */
-        #about {
-            background: #f8f9fa;
+        .about {
+            padding: 120px 5%;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
         }
 
-        .about-content {
-            max-width: 800px;
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(201, 169, 98, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(201, 169, 98, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .about-container {
+            max-width: 1400px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .about-content .section-label {
+            color: var(--gold);
+        }
+
+        .about-content .section-title {
+            color: var(--white);
+            text-align: left;
+            margin-bottom: 32px;
         }
 
         .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #555;
-            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 16px;
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(201, 169, 98, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-feature-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold);
+        }
+
+        .about-feature span {
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 400;
         }
 
         /* Contact Section */
-        .contact-content {
-            max-width: 600px;
+        .contact {
+            padding: 120px 5%;
+            background: var(--cream);
+        }
+
+        .contact-container {
+            max-width: 1400px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+        }
+
+        .contact-info {
+            padding-top: 20px;
+        }
+
+        .contact-info .section-title {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .contact-info > p {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 48px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-method-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--navy);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-method-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--gold);
+        }
+
+        .contact-method-text h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .contact-method-text a,
+        .contact-method-text p {
+            color: var(--text-light);
+            font-size: 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-method-text a:hover {
+            color: var(--gold-dark);
+        }
+
+        .contact-form-wrapper {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: 0 10px 40px rgba(30, 58, 95, 0.08);
+            border: 1px solid rgba(30, 58, 95, 0.06);
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
+            gap: 8px;
         }
 
         .form-group label {
-            margin-bottom: 0.5rem;
-            color: #1e3a5f;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--navy);
         }
 
         .form-group input,
+        .form-group select,
         .form-group textarea {
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s;
+            padding: 14px 18px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            color: var(--text);
+            background: var(--cream);
+            border: 1px solid var(--cream-dark);
+            border-radius: 10px;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #4a90e2;
+            border-color: var(--gold);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #aaa;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
         }
 
         .form-group textarea {
-            min-height: 150px;
+            min-height: 140px;
             resize: vertical;
         }
 
-        .submit-button {
-            background: #1e3a5f;
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .submit-button:hover {
-            background: #2c5282;
-        }
-
-        .contact-info {
-            margin-top: 3rem;
-            text-align: center;
-        }
-
-        .contact-info p {
-            font-size: 1.1rem;
-            margin: 0.5rem 0;
-            color: #555;
-        }
-
-        .contact-info a {
-            color: #4a90e2;
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
+        .contact-form .btn-primary {
+            width: 100%;
+            justify-content: center;
+            padding: 18px 32px;
+            font-size: 16px;
         }
 
         /* Footer */
         footer {
-            background: #1e3a5f;
-            color: white;
-            text-align: center;
-            padding: 2rem;
+            background: var(--navy-dark);
+            padding: 60px 5% 30px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo .logo-text {
+            font-size: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: var(--gold);
+            text-decoration: none;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .hero-content {
+                order: 1;
+            }
+
+            .hero-image {
+                order: 0;
+                max-width: 400px;
+                margin: 0 auto;
             }
 
             .hero p {
-                font-size: 1.1rem;
+                margin-left: auto;
+                margin-right: auto;
             }
 
-            section h2 {
-                font-size: 2rem;
+            .hero-buttons {
+                justify-content: center;
             }
 
-            nav .container {
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .about-content {
+                text-align: center;
+            }
+
+            .about-content .section-title {
+                text-align: center;
+            }
+
+            .about-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .contact-info .section-title {
+                text-align: center;
+            }
+
+            .contact-methods {
+                align-items: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--navy);
                 flex-direction: column;
-                gap: 1rem;
+                padding: 20px;
+                gap: 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 16px 0;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 100px 5% 60px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-wrapper {
+                padding: 32px 24px;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">Mals CPA</div>
-            <ul>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text">MAL'S <span>CPA</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="upload/">Upload Documents</a></li>
             </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Strategic Financial Leadership for Growing Businesses</h1>
-            <p>Expert Fractional CFO Services, Bookkeeping, and Tax Preparation</p>
-            <a href="#contact" class="cta-button">Get Started Today</a>
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">Fractional CFO • Bookkeeping • Tax</span>
+                <h1>Strategic Financial Leadership for <span>Growing Businesses</span></h1>
+                <p>Expert financial guidance, comprehensive bookkeeping, and tax preparation services tailored to help your business thrive.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        Get Started Today
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <img src="austen.jpg" alt="Austen - Mal's CPA">
+                </div>
+                <div class="hero-image-accent"></div>
+            </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <h2>Our Services</h2>
+    <section class="services" id="services">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">What We Offer</span>
+                <h2 class="section-title">Our Services</h2>
+            </div>
             <div class="services-grid">
                 <!-- Fractional CFO -->
                 <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
                     <h3>Fractional CFO</h3>
                     <p>Get C-level financial expertise without the full-time cost. Perfect for growing businesses that need strategic financial leadership.</p>
-                    <ul>
+                    <ul class="service-list">
                         <li>Financial strategy and planning</li>
                         <li>Cash flow management</li>
                         <li>Budgeting and forecasting</li>
@@ -339,9 +1011,17 @@
 
                 <!-- Bookkeeping -->
                 <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            <line x1="8" y1="7" x2="16" y2="7"></line>
+                            <line x1="8" y1="11" x2="16" y2="11"></line>
+                        </svg>
+                    </div>
                     <h3>Bookkeeping</h3>
                     <p>Accurate, timely bookkeeping services that keep your financial records organized and compliant.</p>
-                    <ul>
+                    <ul class="service-list">
                         <li>Monthly bookkeeping and reconciliation</li>
                         <li>Accounts payable and receivable</li>
                         <li>Payroll processing</li>
@@ -353,9 +1033,17 @@
 
                 <!-- Tax Preparation -->
                 <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                            <path d="M6 8h.01M10 8h.01"></path>
+                        </svg>
+                    </div>
                     <h3>Tax Preparation</h3>
                     <p>Comprehensive tax preparation services for individuals and businesses, maximizing deductions and ensuring compliance.</p>
-                    <ul>
+                    <ul class="service-list">
                         <li>Individual tax returns</li>
                         <li>Business tax returns (LLC, S-Corp, C-Corp)</li>
                         <li>Tax planning and strategy</li>
@@ -369,48 +1057,156 @@
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About Mals CPA</h2>
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <div class="about-image-wrapper">
+                    <img src="austen.jpg" alt="Austen - Mal's CPA">
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Clients Served</div>
+                    </div>
+                </div>
+            </div>
             <div class="about-content">
-                <p>At Mals CPA, we provide strategic financial guidance and comprehensive accounting services to help businesses thrive. With years of experience in financial management, bookkeeping, and tax preparation, we're committed to delivering personalized solutions that meet your unique needs.</p>
+                <span class="section-label">About Us</span>
+                <h2 class="section-title">Your Trusted Financial Partner</h2>
+                <p>At Mal's CPA, we provide strategic financial guidance and comprehensive accounting services to help businesses thrive. With years of experience in financial management, bookkeeping, and tax preparation, we're committed to delivering personalized solutions that meet your unique needs.</p>
                 <p>Whether you're a startup seeking fractional CFO expertise, an established business needing reliable bookkeeping, or an individual looking for expert tax preparation, we're here to help you achieve your financial goals.</p>
-                <p>Our approach combines deep technical expertise with a genuine commitment to understanding your business and helping you succeed.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <span>Personalized Service</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <span>Industry Expertise</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <span>Proactive Guidance</span>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <span>Clear Communication</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-content">
-                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Interested In</label>
-                        <input type="text" id="service" name="service" placeholder="e.g., Fractional CFO, Bookkeeping, Tax Prep">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <div class="contact-container">
                 <div class="contact-info">
-                    <p><strong>Email:</strong> <a href="mailto:austen@malscpa.com">austen@malscpa.com</a></p>
-                    <p><strong>Phone:</strong> <a href="tel:+15869447939">(586) 944-7939</a></p>
+                    <span class="section-label">Get In Touch</span>
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <p>Ready to take control of your finances? Reach out today and let's discuss how we can help your business grow.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="contact-method-text">
+                                <h4>Email</h4>
+                                <a href="mailto:austen@malscpa.com">austen@malscpa.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-method-text">
+                                <h4>Phone</h4>
+                                <a href="tel:+15869447939">(586) 944-7939</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="contact-method-text">
+                                <h4>Location</h4>
+                                <p>Metamora, Michigan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="311eef9f-7bd2-4dbc-956e-bc50c9131845">
+                        <input type="hidden" name="subject" value="New Contact Form Submission - Mal's CPA">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service Interested In</label>
+                                <select id="service" name="service">
+                                    <option value="">Select a service...</option>
+                                    <option value="Fractional CFO">Fractional CFO</option>
+                                    <option value="Bookkeeping">Bookkeeping</option>
+                                    <option value="Tax Preparation - Business">Tax Preparation - Business</option>
+                                    <option value="Tax Preparation - Individual">Tax Preparation - Individual</option>
+                                    <option value="Consulting">Consulting</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your needs..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Send Message
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -418,15 +1214,57 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Mals CPA. All rights reserved.</p>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="#" class="logo">
+                        <span class="logo-text">MAL'S <span>CPA</span></span>
+                    </a>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="upload/">Upload Documents</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mal's CPA. All rights reserved.</p>
+                <p>Metamora, Michigan | <a href="mailto:austen@malscpa.com">austen@malscpa.com</a></p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
