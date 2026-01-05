@@ -3,24 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Document Upload | Mal's CPA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Upload Documents - Mal's CPA</title>
     <style>
-        :root {
-            --navy: #1a2332;
-            --navy-light: #2a3a52;
-            --gold: #c9a962;
-            --gold-light: #e5d4a1;
-            --cream: #faf8f5;
-            --cream-dark: #f0ebe3;
-            --text: #3d3d3d;
-            --text-light: #6b6b6b;
-            --success: #2d7a4f;
-            --error: #c44536;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -28,116 +12,89 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--cream);
-            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
             min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        /* Subtle background texture */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(201, 169, 98, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(26, 35, 50, 0.02) 0%, transparent 40%),
-                radial-gradient(circle at 40% 80%, rgba(201, 169, 98, 0.02) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
         .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 40px 24px 60px;
-            position: relative;
-            z-index: 1;
+            width: 100%;
+            max-width: 540px;
         }
 
-        /* Header */
         header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 32px;
         }
 
         .logo {
-            display: inline-flex;
+            display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .logo-icon {
             width: 48px;
             height: 48px;
-            background: var(--navy);
-            border-radius: 8px;
+            background: linear-gradient(135deg, #c9a962 0%, #d4b87a 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(26, 35, 50, 0.15);
+            color: #1a2332;
         }
 
         .logo-icon svg {
             width: 28px;
             height: 28px;
-            fill: var(--gold);
         }
 
         .logo-text {
-            font-family: 'Cormorant Garamond', serif;
             font-size: 28px;
-            font-weight: 600;
-            color: var(--navy);
+            font-weight: 700;
+            color: #ffffff;
             letter-spacing: -0.5px;
         }
 
         h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            font-weight: 500;
-            color: var(--navy);
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
         .subtitle {
-            color: var(--text-light);
+            color: #a0aec0;
             font-size: 16px;
-            font-weight: 300;
         }
 
-        /* Form Card */
         .form-card {
-            background: white;
+            background: #ffffff;
             border-radius: 16px;
-            padding: 40px;
-            box-shadow: 
-                0 1px 3px rgba(26, 35, 50, 0.04),
-                0 8px 32px rgba(26, 35, 50, 0.08);
-            border: 1px solid rgba(26, 35, 50, 0.06);
+            padding: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
         .form-group {
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         label {
             display: block;
             font-size: 14px;
-            font-weight: 500;
-            color: var(--navy);
+            font-weight: 600;
+            color: #1a2332;
             margin-bottom: 8px;
-            letter-spacing: 0.2px;
         }
 
         .required {
-            color: var(--gold);
+            color: #e53e3e;
         }
 
         input[type="text"],
@@ -147,352 +104,246 @@
         textarea {
             width: 100%;
             padding: 14px 16px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 15px;
-            color: var(--text);
-            background: var(--cream);
-            border: 1px solid var(--cream-dark);
+            font-size: 16px;
+            border: 2px solid #e2e8f0;
             border-radius: 10px;
             transition: all 0.2s ease;
+            background: #ffffff;
         }
 
         input:focus,
         select:focus,
         textarea:focus {
             outline: none;
-            border-color: var(--gold);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.12);
+            border-color: #c9a962;
+            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
         }
 
         input::placeholder,
         textarea::placeholder {
-            color: #aaa;
+            color: #a0aec0;
         }
 
         select {
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231a2332' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 16px center;
+            background-position: right 12px center;
+            background-size: 20px;
             padding-right: 44px;
         }
 
         textarea {
-            min-height: 100px;
             resize: vertical;
+            min-height: 100px;
         }
 
-        /* File Upload Area */
         .upload-area {
-            border: 2px dashed var(--cream-dark);
+            border: 2px dashed #cbd5e0;
             border-radius: 12px;
-            padding: 40px 24px;
+            padding: 40px 20px;
             text-align: center;
-            transition: all 0.25s ease;
             cursor: pointer;
-            background: linear-gradient(135deg, var(--cream) 0%, white 100%);
+            transition: all 0.2s ease;
+            background: #f8fafc;
         }
 
-        .upload-area:hover,
-        .upload-area.dragover {
-            border-color: var(--gold);
-            background: linear-gradient(135deg, rgba(201, 169, 98, 0.05) 0%, white 100%);
+        .upload-area:hover {
+            border-color: #c9a962;
+            background: #fffdf7;
         }
 
         .upload-area.dragover {
+            border-color: #c9a962;
+            background: #fffdf7;
             transform: scale(1.01);
         }
 
         .upload-icon {
             width: 56px;
             height: 56px;
-            margin: 0 auto 16px;
-            background: var(--navy);
+            background: #1a2332;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto 16px;
         }
 
         .upload-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--gold);
+            width: 28px;
+            height: 28px;
+            color: #c9a962;
         }
 
         .upload-text {
-            font-size: 15px;
-            color: var(--text);
+            font-size: 16px;
+            color: #1a2332;
             margin-bottom: 4px;
         }
 
-        .upload-text strong {
-            color: var(--navy);
-            font-weight: 500;
+        .upload-text span {
+            color: #c9a962;
+            font-weight: 600;
         }
 
         .upload-hint {
-            font-size: 13px;
-            color: var(--text-light);
+            font-size: 14px;
+            color: #718096;
         }
 
-        input[type="file"] {
-            display: none;
-        }
-
-        /* File List */
         .file-list {
             margin-top: 16px;
+            text-align: left;
         }
 
         .file-item {
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: space-between;
             padding: 12px 16px;
-            background: var(--cream);
+            background: #f8fafc;
             border-radius: 8px;
             margin-bottom: 8px;
-            animation: slideIn 0.2s ease;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .file-icon {
             width: 36px;
             height: 36px;
-            background: white;
+            background: #1a2332;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
         }
 
         .file-icon svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--navy);
-        }
-
-        .file-info {
-            flex: 1;
-            min-width: 0;
+            width: 20px;
+            height: 20px;
+            color: #c9a962;
         }
 
         .file-name {
             font-size: 14px;
             font-weight: 500;
-            color: var(--navy);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            color: #1a2332;
         }
 
         .file-size {
             font-size: 12px;
-            color: var(--text-light);
+            color: #718096;
         }
 
         .file-remove {
-            width: 28px;
-            height: 28px;
+            background: none;
             border: none;
-            background: transparent;
+            color: #e53e3e;
             cursor: pointer;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.15s ease;
+            padding: 4px;
+            border-radius: 4px;
+            transition: background 0.2s;
         }
 
         .file-remove:hover {
-            background: rgba(196, 69, 54, 0.1);
+            background: #fee2e2;
         }
 
-        .file-remove svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--error);
-        }
-
-        /* Size Warning */
-        .size-warning {
-            display: none;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 16px;
-            background: rgba(196, 69, 54, 0.08);
-            border-radius: 8px;
-            margin-top: 12px;
-            font-size: 13px;
-            color: var(--error);
-        }
-
-        .size-warning.show {
-            display: flex;
-        }
-
-        .size-warning svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--error);
-            flex-shrink: 0;
-        }
-
-        /* Submit Button */
         .submit-btn {
             width: 100%;
-            padding: 16px 32px;
-            font-family: 'Outfit', sans-serif;
+            padding: 16px 24px;
             font-size: 16px;
-            font-weight: 500;
-            color: white;
-            background: var(--navy);
+            font-weight: 600;
+            color: #1a2332;
+            background: linear-gradient(135deg, #c9a962 0%, #d4b87a 100%);
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-top: 32px;
-            position: relative;
-            overflow: hidden;
+            gap: 8px;
         }
 
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            opacity: 0;
-            transition: opacity 0.25s ease;
-        }
-
-        .submit-btn:hover::before {
-            opacity: 1;
-        }
-
-        .submit-btn:hover {
-            color: var(--navy);
+        .submit-btn:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(26, 35, 50, 0.2);
-        }
-
-        .submit-btn span,
-        .submit-btn svg {
-            position: relative;
-            z-index: 1;
-        }
-
-        .submit-btn svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            transition: transform 0.25s ease;
-        }
-
-        .submit-btn:hover svg {
-            transform: translateX(4px);
+            box-shadow: 0 10px 20px rgba(201, 169, 98, 0.3);
         }
 
         .submit-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
-            transform: none;
         }
 
-        .submit-btn:disabled:hover::before {
-            opacity: 0;
+        .submit-btn.loading {
+            pointer-events: none;
         }
 
-        /* Loading State */
-        .submit-btn.loading span {
-            opacity: 0;
+        .submit-btn.loading .btn-text {
+            display: none;
         }
 
-        .submit-btn.loading::after {
-            content: '';
-            position: absolute;
+        .submit-btn.loading .spinner {
+            display: block;
+        }
+
+        .spinner {
+            display: none;
             width: 24px;
             height: 24px;
-            border: 2px solid transparent;
-            border-top-color: white;
+            border: 3px solid rgba(26, 35, 50, 0.3);
+            border-top-color: #1a2332;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            z-index: 2;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        /* Success Message */
         .success-message {
             display: none;
             text-align: center;
-            padding: 48px 24px;
+            padding: 40px 20px;
         }
 
         .success-message.show {
             display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .success-icon {
             width: 72px;
             height: 72px;
-            background: linear-gradient(135deg, var(--success) 0%, #3d9963 100%);
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 24px;
-            box-shadow: 0 8px 24px rgba(45, 122, 79, 0.25);
         }
 
         .success-icon svg {
             width: 36px;
             height: 36px;
-            stroke: white;
-            stroke-width: 2.5;
+            color: white;
         }
 
         .success-message h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 500;
-            color: var(--navy);
+            font-size: 24px;
+            color: #1a2332;
             margin-bottom: 12px;
         }
 
         .success-message p {
-            color: var(--text-light);
-            font-size: 15px;
-            max-width: 380px;
-            margin: 0 auto 28px;
+            color: #718096;
+            margin-bottom: 24px;
         }
 
         .upload-another {
@@ -500,75 +351,70 @@
             align-items: center;
             gap: 8px;
             padding: 12px 24px;
-            font-family: 'Outfit', sans-serif;
             font-size: 14px;
-            font-weight: 500;
-            color: var(--navy);
-            background: var(--cream);
-            border: 1px solid var(--cream-dark);
+            font-weight: 600;
+            color: #1a2332;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
         }
 
         .upload-another:hover {
-            background: var(--cream-dark);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 24px;
-            border-top: 1px solid var(--cream-dark);
+            border-color: #c9a962;
+            background: #fffdf7;
         }
 
         .security-note {
-            display: inline-flex;
+            display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #e2e8f0;
             font-size: 13px;
-            color: var(--text-light);
+            color: #718096;
         }
 
         .security-note svg {
             width: 16px;
             height: 16px;
-            stroke: var(--gold);
+            color: #48bb78;
         }
 
-        .contact-info {
-            margin-top: 16px;
-            font-size: 13px;
-            color: var(--text-light);
+        footer {
+            text-align: center;
+            margin-top: 32px;
+            color: #a0aec0;
+            font-size: 14px;
         }
 
-        .contact-info a {
-            color: var(--navy);
+        footer a {
+            color: #c9a962;
             text-decoration: none;
-            transition: color 0.15s ease;
         }
 
-        .contact-info a:hover {
-            color: var(--gold);
+        footer a:hover {
+            text-decoration: underline;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .container {
-                padding: 24px 16px 40px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
+        @media (max-width: 480px) {
             .form-card {
-                padding: 28px 20px;
+                padding: 24px 20px;
             }
 
             .upload-area {
                 padding: 32px 16px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .logo-text {
+                font-size: 24px;
             }
         }
     </style>
@@ -589,11 +435,7 @@
         </header>
 
         <div class="form-card">
-            <form id="uploadForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
-                <!-- Web3Forms Access Key - You'll need to replace this -->
-                <input type="hidden" name="access_key" value="311eef9f-7bd2-4dbc-956e-bc50c9131845">
-                <input type="hidden" name="subject" value="New Tax Document Upload - Mal's CPA">
-                <input type="hidden" name="from_name" value="Mal's CPA Document Portal">
+            <form id="uploadForm" action="https://formspree.io/f/mbdlbwyl" method="POST" enctype="multipart/form-data">
                 
                 <div class="form-group">
                     <label for="name">Full Name <span class="required">*</span></label>
@@ -617,11 +459,12 @@
                         <option value="W-2">W-2</option>
                         <option value="1099">1099 (any type)</option>
                         <option value="1098">1098 (Mortgage Interest)</option>
-                        <option value="Business Documents">Business Documents</option>
-                        <option value="Bank Statements">Bank Statements</option>
                         <option value="Investment Statements">Investment Statements</option>
-                        <option value="Receipts/Expenses">Receipts / Expense Documentation</option>
-                        <option value="Prior Year Tax Return">Prior Year Tax Return</option>
+                        <option value="Business Income/Expenses">Business Income/Expenses</option>
+                        <option value="Property Tax Statement">Property Tax Statement</option>
+                        <option value="Charitable Donations">Charitable Donations</option>
+                        <option value="Medical Expenses">Medical Expenses</option>
+                        <option value="Prior Year Return">Prior Year Return</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>
@@ -635,44 +478,33 @@
                     <label>Documents <span class="required">*</span></label>
                     <div class="upload-area" id="uploadArea">
                         <div class="upload-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                                 <polyline points="17 8 12 3 7 8"/>
                                 <line x1="12" y1="3" x2="12" y2="15"/>
                             </svg>
                         </div>
-                        <p class="upload-text"><strong>Click to upload</strong> or drag and drop</p>
-                        <p class="upload-hint">PDF, JPG, PNG up to 25MB total • Multiple files allowed</p>
-                        <input type="file" id="fileInput" name="attachment" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx,.xls,.xlsx">
+                        <p class="upload-text"><span>Click to upload</span> or drag and drop</p>
+                        <p class="upload-hint">PDF, JPG, PNG up to 10MB total • Multiple files allowed</p>
                     </div>
+                    <input type="file" id="fileInput" name="attachment" multiple accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
                     <div class="file-list" id="fileList"></div>
-                    <div class="size-warning" id="sizeWarning">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="8" x2="12" y2="12"/>
-                            <line x1="12" y1="16" x2="12.01" y2="16"/>
-                        </svg>
-                        <span>Total file size exceeds 25MB. Please remove some files or submit in multiple uploads.</span>
-                    </div>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <span>Submit Documents</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                    </svg>
+                <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                    <span class="btn-text">Upload Documents</span>
+                    <div class="spinner"></div>
                 </button>
             </form>
 
             <div class="success-message" id="successMessage">
                 <div class="success-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12"/>
                     </svg>
                 </div>
-                <h2>Documents Received!</h2>
-                <p>Thank you for uploading your documents. We'll review them and reach out if we need anything else.</p>
+                <h2>Documents Uploaded!</h2>
+                <p>Thank you! We've received your documents and will review them shortly.</p>
                 <button class="upload-another" id="uploadAnother">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -682,34 +514,31 @@
                     Upload More Documents
                 </button>
             </div>
-        </div>
 
-        <footer>
             <div class="security-note">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                     <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                 </svg>
                 Your documents are transmitted securely
             </div>
-            <div class="contact-info">
-                Questions? Contact us at <a href="mailto:austen@malscpa.com">austen@malscpa.com</a> or <a href="tel:5869447939">(586) 944-7939</a>
-            </div>
+        </div>
+
+        <footer>
+            <p>Questions? Contact us at <a href="mailto:austen@malscpa.com">austen@malscpa.com</a> or <a href="tel:586-944-7939">586-944-7939</a></p>
         </footer>
     </div>
 
     <script>
+        const form = document.getElementById('uploadForm');
         const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('fileInput');
         const fileList = document.getElementById('fileList');
-        const sizeWarning = document.getElementById('sizeWarning');
         const submitBtn = document.getElementById('submitBtn');
-        const form = document.getElementById('uploadForm');
         const successMessage = document.getElementById('successMessage');
         const uploadAnother = document.getElementById('uploadAnother');
 
         let files = [];
-        const MAX_SIZE = 25 * 1024 * 1024; // 25MB
 
         // Click to upload
         uploadArea.addEventListener('click', () => fileInput.click());
@@ -731,92 +560,87 @@
         });
 
         // File input change
-        fileInput.addEventListener('change', () => {
-            handleFiles(fileInput.files);
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
         });
 
         function handleFiles(newFiles) {
             for (let file of newFiles) {
-                if (!files.some(f => f.name === file.name && f.size === file.size)) {
-                    files.push(file);
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`File "${file.name}" is too large. Maximum size is 10MB.`);
+                    continue;
                 }
+                files.push(file);
             }
             updateFileList();
+            updateSubmitButton();
         }
 
         function updateFileList() {
-            fileList.innerHTML = '';
-            let totalSize = 0;
-
-            files.forEach((file, index) => {
-                totalSize += file.size;
-                const fileItem = document.createElement('div');
-                fileItem.className = 'file-item';
-                fileItem.innerHTML = `
-                    <div class="file-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                        </svg>
-                    </div>
+            fileList.innerHTML = files.map((file, index) => `
+                <div class="file-item">
                     <div class="file-info">
-                        <div class="file-name">${file.name}</div>
-                        <div class="file-size">${formatSize(file.size)}</div>
+                        <div class="file-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-size">${formatFileSize(file.size)}</div>
+                        </div>
                     </div>
                     <button type="button" class="file-remove" onclick="removeFile(${index})">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="18" y1="6" x2="6" y2="18"/>
                             <line x1="6" y1="6" x2="18" y2="18"/>
                         </svg>
                     </button>
-                `;
-                fileList.appendChild(fileItem);
-            });
-
-            // Update file input with current files
-            const dt = new DataTransfer();
-            files.forEach(file => dt.items.add(file));
-            fileInput.files = dt.files;
-
-            // Check total size
-            if (totalSize > MAX_SIZE) {
-                sizeWarning.classList.add('show');
-                submitBtn.disabled = true;
-            } else {
-                sizeWarning.classList.remove('show');
-                submitBtn.disabled = files.length === 0;
-            }
+                </div>
+            `).join('');
         }
 
         function removeFile(index) {
             files.splice(index, 1);
             updateFileList();
+            updateSubmitButton();
         }
 
-        function formatSize(bytes) {
-            if (bytes < 1024) return bytes + ' B';
-            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+
+        function updateSubmitButton() {
+            submitBtn.disabled = files.length === 0;
         }
 
         // Form submission
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            if (files.length === 0) {
-                alert('Please select at least one file to upload.');
-                return;
-            }
-
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
 
             try {
                 const formData = new FormData(form);
                 
+                // Clear any existing file inputs and add our files
+                formData.delete('attachment');
+                files.forEach((file, index) => {
+                    formData.append('attachment', file);
+                });
+
                 const response = await fetch(form.action, {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 });
 
                 if (response.ok) {
